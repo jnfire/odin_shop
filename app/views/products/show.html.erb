@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @product %>
+<p>Final Price: <%= @product.final_price %></p>
+<p>Stock Value: <%= @product.stock_value %></p>
+<p>In Stock: <%= @product.in_stock? ? "Yes" : "No" %></p>
 
 <div>
   <%= link_to "Edit this product", edit_product_path(@product) %> |
