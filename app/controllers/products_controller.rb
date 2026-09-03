@@ -23,14 +23,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new, status: :unprocessable_content }
-        format.json { render json: @product.errors, status: :unprocessable_content }
-      end
+    if @product.save
+      flash[:notice] = "Product was successfully created."
+      redirect_to @product, status: :see_other
+    else
+      flash.now[:alert] = "There was an error creating the product."
+      render :new, status: :unprocessable_content
     end
   end
 
