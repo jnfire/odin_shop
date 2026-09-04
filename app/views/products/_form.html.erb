@@ -37,6 +37,11 @@
   </div>
 
   <div>
+    <%= form.label :category_id, "Categoría" %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, prompt: "Selecciona una categoría" %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

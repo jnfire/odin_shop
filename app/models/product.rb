@@ -2,6 +2,8 @@ class Product < ApplicationRecord
 
   validates :name, presence: true
 
+  belongs_to :category
+
   def final_price
     base_price + tax_price
   end
